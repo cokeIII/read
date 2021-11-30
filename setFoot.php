@@ -3,3 +3,7 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery.dataTables.min.js"></script>
+<script src="js/mainScripts.js"></script>
+<script defer src="js/brands.js"></script>
+<script defer src="js/solid.js"></script>
+<script defer src="js/fontawesome.js"></script>

@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$database = "finance";
+$database = "read";
 // Create connection
 $conn = new mysqli($servername, $username, $password,$database);
 $conn->set_charset("utf8");
