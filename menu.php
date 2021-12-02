@@ -1,8 +1,16 @@
 <div class="topnav" id="myTopnav">
-  <a href="#home" class="active">หน้าแรก</a>
-  <?php if (!empty($_SESSION["user_status"])) { ?>
-    <a href="#news">บันทึกการอ่าน</a>
-    <a href="#contact">รายการที่บันทึก</a>
+  <a href="#home" class="active">โครงการส่งเสริมรักการอ่าน</a>
+  <?php
+  if (!empty($_SESSION["user_status"])) {
+    if ($_SESSION["user_status"] == "student") {
+  ?>
+      <a href="add_log.php">บันทึกการอ่าน</a>
+      <a href="list_log.php">รายการที่บันทึก</a>
+
+    <?php } else if ($_SESSION["user_status"] == "admin") { ?>
+      <!-- <a href="dashboard.php">Dashboard</a> -->
+      <a href="a_list_log.php">รายการที่บันทึก</a>
+    <?php } ?>
     <a href="logout.php"> ออกจากระบบ</a>
   <?php } else { ?>
     <a href="index.php">เข้าสู่ระบบ</a>

@@ -1,7 +1,8 @@
 <?php
 require_once "connect.php";
-
+session_start();
 $student_id = $_POST["student_id"];
+$read_id = $_POST["read_id"];
 $book_name = $_POST["book_name"];
 $read_date = $_POST["read_date"];
 $author = $_POST["author"];
@@ -38,43 +39,48 @@ if (file_exists($target_file)) {
 if ($uploadOk == 0) {
     echo "Sorry, your file was not uploaded.";
     // if everything is ok, try to upload file
+    $sql = "update read_log set
+    book_name = '$book_name',
+    read_date = '$read_date',
+    author = '$author',
+    publisher = '$publisher',
+    book_category = '$book_category',
+    page = '$page',
+    essence = '$essence',
+    idea = '$idea',
+    apply = '$apply'
+    where read_id = '$read_id'
+    ";
 } else {
     if (move_uploaded_file($_FILES["book_cover"]["tmp_name"], $target_file)) {
         echo "The file " . htmlspecialchars(basename($_FILES["book_cover"]["name"])) . " has been uploaded.";
+        $sql = "update read_log set
+        book_name = '$book_name',
+        read_date = '$read_date',
+        author = '$author',
+        publisher = '$publisher',
+        book_category = '$book_category',
+        page = '$page',
+        essence = '$essence',
+        idea = '$idea',
+        apply = '$apply',
+        book_cover = '$book_cover'
+        where read_id = '$read_id'
+        ";
     } else {
         echo "Sorry, there was an error uploading your file.";
     }
 }
-if ($uploadOk) {
-    $sql = "insert into read_log (
-        student_id,
-        book_name,
-        read_date,
-        author,
-        publisher,
-        book_category,
-        page,
-        essence,
-        idea,
-        apply,
-        book_cover
-        ) value(
-            '$student_id',
-            '$book_name',
-            '$read_date',
-            '$author',
-            '$publisher',
-            '$book_category',
-            '$page',
-            '$essence',
-            '$idea',
-            '$apply',
-            '$book_cover'
-        )";
-    $res = mysqli_query($conn, $sql);
-    if ($res) {
-        header("location: list_log.php");
-    } else {
-        echo $sql;
+
+$res = mysqli_query($conn, $sql);
+if ($res) {
+    if (!empty($_SESSION["user_status"])) {
+        if ($_SESSION["user_status"] == "admin") {
+            header("location: a_list_log.php");
+        } else {
+            header("location: list_log.php");
+        }
     }
+} else {
+    echo $sql;
 }

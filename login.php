@@ -4,7 +4,8 @@ session_start();
 $username = $_POST["username"];
 $password = $_POST["password"];
 if($username == "admin" && $password == "ctcread"){
-
+    $_SESSION["user_status"] = "admin";
+    header("location: a_list_log.php");
 } else {
     $sql = "select * from student where student_id = '$username' and birthday='$password' and status = '0'";
     $res = mysqli_query($conn,$sql);
