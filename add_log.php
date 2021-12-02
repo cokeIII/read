@@ -10,6 +10,7 @@
 </head>
 <?php
 require_once "connect.php";
+require_once "checkLogin.php";
 $student_id = $_SESSION["student_id"];
 $sql = "
 select * from student s

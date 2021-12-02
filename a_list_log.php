@@ -3,6 +3,7 @@
 <?php
 require_once "setHead.php";
 require_once "connect.php";
+require_once "checkLoginAdmin.php";
 ?>
 <style>
 

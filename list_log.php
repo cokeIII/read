@@ -3,6 +3,7 @@
 <?php
 require_once "setHead.php";
 require_once "connect.php";
+require_once "checkLogin.php";
 $student_id = $_SESSION["student_id"];
 ?>
 <style>

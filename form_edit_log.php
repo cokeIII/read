@@ -3,6 +3,7 @@
 <?php
 require_once "setHead.php";
 require_once "connect.php";
+require_once "checkLogin.php";
 $read_id = $_POST["read_id"];
 $sql = "select * from read_log r 
 inner join student s on s.student_id = r.student_id
