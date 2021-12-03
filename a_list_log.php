@@ -117,7 +117,7 @@ require_once "checkLoginAdmin.php";
                         </select>
                     </div>
                 </div>
-                <table id="listLog" class="table dt-responsive">
+                <table id="listLog" class="table responsive">
                     <thead>
                         <th>ลำดับ</th>
                         <th>
