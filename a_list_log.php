@@ -117,7 +117,7 @@ require_once "checkLoginAdmin.php";
                         </select>
                     </div>
                 </div>
-                <table id="listLog" class="table responsive">
+                <table id="listLog" class="table responsive display">
                     <thead>
                         <th>ลำดับ</th>
                         <th>
@@ -291,7 +291,8 @@ require_once "checkLoginAdmin.php";
                     "previous": "หน้าก่อน"
                 }
             },
-            responsive: true
+            responsive: true,
+            "scrollX": true
         });
 
     })

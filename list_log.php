@@ -16,7 +16,7 @@ $student_id = $_SESSION["student_id"];
     <div class="container">
         <div class="card mt-5">
             <div class="card-body p-5">
-                <table id="listLog" class="table responsive">
+                <table id="listLog" class="table responsive display">
                     <thead>
                         <th>ลำดับ</th>
                         <th>ชื่อหนังสือที่อ่าน</th>
@@ -112,7 +112,8 @@ $student_id = $_SESSION["student_id"];
                     "previous": "หน้าก่อน"
                 }
             },
-            responsive: true
+            responsive: true,
+            "scrollX": true
         });
 
     })
