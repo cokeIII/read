@@ -65,8 +65,8 @@ $row = mysqli_fetch_array($res);
         }
 
         .responsive {
-            max-width: 250px;
-            max-width: 350;
+            max-width: 100px;
+            max-width: 150px;
             width: 100%;
             height: auto;
         }

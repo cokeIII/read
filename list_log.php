@@ -16,7 +16,7 @@ $student_id = $_SESSION["student_id"];
     <div class="container">
         <div class="card mt-5">
             <div class="card-body p-5">
-                <table id="listLog">
+                <table id="listLog" class="table dt-responsive">
                     <thead>
                         <th>ลำดับ</th>
                         <th>ชื่อหนังสือที่อ่าน</th>
