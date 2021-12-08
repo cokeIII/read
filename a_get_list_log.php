@@ -5,13 +5,13 @@ $datalist = array();
 $group_id = $_POST["group_id"];
 if(empty($group_id)){
     $sql = "select * from read_log r
-    inner join student s on s.student_id = r.student_id
-    inner join student_group sg on s.group_id = sg.student_group_id
+    left join student s on s.student_id = r.student_id
+    left join student_group sg on s.group_id = sg.student_group_id
     ";
 }else{
     $sql = "select * from read_log r
-    inner join student s on s.student_id = r.student_id
-    inner join student_group sg on s.group_id = sg.student_group_id
+    left join student s on s.student_id = r.student_id
+    left join student_group sg on s.group_id = sg.student_group_id
     where s.group_id = '$group_id'";
 }
 
