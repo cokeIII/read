@@ -28,7 +28,7 @@ require_once "checkLoginAdmin.php";
                                 $rowSum = mysqli_fetch_array($resSum);
                                 ?>
                                 <div class="text-end pt-1">
-                                    <p class="text-md mb-0 text-capitalize">รายการทั้งหมด.</p>
+                                    <p class="text-md mb-0 text-capitalize">รายการทั้งหมด</p>
                                     <h4 class="mb-0"><?php echo $rowSum["countRead"]; ?></h4>
                                 </div>
                             </div>
@@ -40,10 +40,10 @@ require_once "checkLoginAdmin.php";
                     </div>
                     <?php
                     $rank = [];
-                    // $sqlRank = "select student_group_short_name,count(read_id) as countRead from read_log r
-                    // inner join student s on s.student_id = r.student_id
-                    // inner join student_group sg on s.group_id = sg.student_group_id
-                    // group by s.group_id limit 3";
+                    $sqlRank = "select student_group_short_name,count(read_id) as countRead from read_log r
+                    inner left student s on s.student_id = r.student_id
+                    inner left student_group sg on s.group_id = sg.student_group_id
+                    group by s.group_id limit 3";
                     $resRank = mysqli_query($conn, $sqlRank);
                     while ($rowRank = mysqli_fetch_array($resRank)) {
                         array_push($rank, ["group" => $rowRank["student_group_short_name"], "list" => $rowRank["countRead"]]);
