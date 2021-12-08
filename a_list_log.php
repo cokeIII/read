@@ -47,8 +47,8 @@ require_once "checkLoginAdmin.php";
                     while ($rowRank = mysqli_fetch_array($resRank)) {
                         array_push($rank, ["group" => $rowRank["stu_fname"]." ".$rowRank["stu_lname"], "list" => $rowRank["countRead"]]);
                     }
-                    $list = array_column($rank, 'list');
-                    array_multisort($list, SORT_DESC, $rank);
+                    // $list = array_column($rank, 'list');
+                    // array_multisort($list, SORT_DESC, $rank);
                     ?>
                     <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
                         <div class="card">
