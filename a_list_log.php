@@ -3,7 +3,7 @@
 <?php
 require_once "setHead.php";
 require_once "connect.php";
-// require_once "checkLoginAdmin.php";
+require_once "checkLoginAdmin.php";
 ?>
 <style>
 
@@ -59,12 +59,12 @@ require_once "connect.php";
                                 </div>
                                 <div class="text-end pt-1">
                                     <p class="text-md mb-0 text-capitalize">รายการรวม อันดับ 1</p>
-                                    <h4 class="mb-0"><?php echo (count($rank) > 0?$rank[0]["list"]:"0")?></h4>
+                                    <h4 class="mb-0"><?php echo (count($rank) > 0 ? $rank[0]["list"] : "0") ?></h4>
                                 </div>
                             </div>
                             <hr class="dark horizontal my-0">
                             <div class="card-footer p-3">
-                                <p class="mb-0"><span class="text-success text-sm font-weight-bolder"></span><?php echo (count($rank) > 0?$rank[0]["group"]:"ไม่มีรายการ")?></p>
+                                <p class="mb-0"><span class="text-success text-sm font-weight-bolder"></span><?php echo (count($rank) > 0 ? $rank[0]["group"] : "ไม่มีรายการ") ?></p>
                             </div>
                         </div>
                     </div>
@@ -76,12 +76,12 @@ require_once "connect.php";
                                 </div>
                                 <div class="text-end pt-1">
                                     <p class="text-md mb-0 text-capitalize">รายการรวม อันดับ 2</p>
-                                    <h4 class="mb-0"><?php echo (count($rank) > 1?$rank[1]["list"]:"0")?></h4>
+                                    <h4 class="mb-0"><?php echo (count($rank) > 1 ? $rank[1]["list"] : "0") ?></h4>
                                 </div>
                             </div>
                             <hr class="dark horizontal my-0">
                             <div class="card-footer p-3">
-                                <p class="mb-0"><span class="text-danger text-sm font-weight-bolder"></span><?php echo (count($rank) > 1?$rank[1]["group"]:"ไม่มีรายการ")?></p>
+                                <p class="mb-0"><span class="text-danger text-sm font-weight-bolder"></span><?php echo (count($rank) > 1 ? $rank[1]["group"] : "ไม่มีรายการ") ?></p>
                             </div>
                         </div>
                     </div>
@@ -93,12 +93,12 @@ require_once "connect.php";
                                 </div>
                                 <div class="text-end pt-1">
                                     <p class="text-md mb-0 text-capitalize">รายการรวม อันดับ 3</p>
-                                    <h4 class="mb-0"><?php echo (count($rank) > 2?$rank[2]["list"]:"0")?></h4>
+                                    <h4 class="mb-0"><?php echo (count($rank) > 2 ? $rank[2]["list"] : "0") ?></h4>
                                 </div>
                             </div>
                             <hr class="dark horizontal my-0">
                             <div class="card-footer p-3">
-                                <p class="mb-0"><span class="text-success text-sm font-weight-bolder"></span><?php echo (count($rank) > 2?$rank[2]["group"]:"ไม่มีรายการ")?></p>
+                                <p class="mb-0"><span class="text-success text-sm font-weight-bolder"></span><?php echo (count($rank) > 2 ? $rank[2]["group"] : "ไม่มีรายการ") ?></p>
                             </div>
                         </div>
                     </div>
@@ -134,6 +134,19 @@ require_once "connect.php";
                     <tbody>
 
                     </tbody>
+                    <tfoot>
+                        <th>ลำดับ</th>
+                        <th>
+                            ชื่อ - สกุล
+                        </th>
+                        <th>
+                            ระดับชั้น
+                        </th>
+                        <th>ชื่อหนังสือที่อ่าน</th>
+                        <th>เริ่มอ่านวันที่</th>
+                        <th></th>
+                        <th></th>
+                    </tfoot>
                 </table>
             </div>
         </div>
