@@ -109,11 +109,11 @@ require_once "checkLoginAdmin.php";
                         <select id="group_select" class="form-control">
                             <option value="">เลือกทั้งหมด</option>
                             <?php $sqlG = "select * from student_group";
-                            // $resG = mysqli_query($conn, $sqlG);
-                            // while ($rowG = mysqli_fetch_array($resG)) {
+                            $resG = mysqli_query($conn, $sqlG);
+                            while ($rowG = mysqli_fetch_array($resG)) {
                             ?>
-                                <option value="<?php //echo $rowG["student_group_id"]; ?>"><?php //echo $rowG["student_group_short_name"] . "(" . $rowG["student_group_id"] . ")"; ?></option>
-                            <?php //} ?>
+                                <option value="<?php echo $rowG["student_group_id"]; ?>"><?php //echo $rowG["student_group_short_name"] . "(" . $rowG["student_group_id"] . ")"; ?></option>
+                            <?php } ?>
                         </select>
                     </div>
                 </div>
