@@ -49,7 +49,7 @@ require_once "checkLoginAdmin.php";
                         array_push($rank, ["group" => $rowRank["student_group_short_name"], "list" => $rowRank["countRead"]]);
                     }
                     $list = array_column($rank, 'list');
-                    array_multisort($list, SORT_DESC, $rank);
+                    // array_multisort($list, SORT_DESC, $rank);
                     ?>
                     <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
                         <div class="card">
