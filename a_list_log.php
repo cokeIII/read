@@ -41,8 +41,8 @@ require_once "checkLoginAdmin.php";
                     <?php
                     $rank = [];
                     $sqlRank = "select student_group_short_name,count(read_id) as countRead from read_log r
-                    inner left student s on s.student_id = r.student_id
-                    inner left student_group sg on s.group_id = sg.student_group_id
+                    left join student s on s.student_id = r.student_id
+                    left join student_group sg on s.group_id = sg.student_group_id
                     group by s.group_id limit 3";
                     $resRank = mysqli_query($conn, $sqlRank);
                     while ($rowRank = mysqli_fetch_array($resRank)) {
