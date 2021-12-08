@@ -39,17 +39,16 @@ require_once "checkLoginAdmin.php";
                         </div>
                     </div>
                     <?php
-                    // $rank = [];
-                    // $sqlRank = "select student_group_short_name,count(read_id) as countRead from read_log r
-                    // left join student s on s.student_id = r.student_id
-                    // left join student_group sg on s.group_id = sg.student_group_id
-                    // group by s.group_id limit 3";
-                    // $resRank = mysqli_query($conn, $sqlRank);
-                    // while ($rowRank = mysqli_fetch_array($resRank)) {
-                    //     array_push($rank, ["group" => $rowRank["student_group_short_name"], "list" => $rowRank["countRead"]]);
-                    // }
-                    // $list = array_column($rank, 'list');
-                    // array_multisort($list, SORT_DESC, $rank);
+                    $rank = [];
+                    $sqlRank = "select stu_fname,stu_lname,count(read_id) as countRead from read_log r
+                    left join student s on s.student_id = r.student_id
+                    group by s.group_id limit 3";
+                    $resRank = mysqli_query($conn, $sqlRank);
+                    while ($rowRank = mysqli_fetch_array($resRank)) {
+                        array_push($rank, ["group" => $rowRank["stu_fname"]." ".$rowRank["stu_lname"], "list" => $rowRank["countRead"]]);
+                    }
+                    $list = array_column($rank, 'list');
+                    array_multisort($list, SORT_DESC, $rank);
                     ?>
                     <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
                         <div class="card">
@@ -59,7 +58,7 @@ require_once "checkLoginAdmin.php";
                                 </div>
                                 <div class="text-end pt-1">
                                     <p class="text-md mb-0 text-capitalize">รายการรวม อันดับ 1</p>
-                                    <h4 class="mb-0"><?php //echo (count($rank) > 0 ? $rank[0]["list"] : "0") ?></h4>
+                                    <h4 class="mb-0"><?php echo (count($rank) > 0 ? $rank[0]["list"] : "0") ?></h4>
                                 </div>
                             </div>
                             <hr class="dark horizontal my-0">
@@ -76,7 +75,7 @@ require_once "checkLoginAdmin.php";
                                 </div>
                                 <div class="text-end pt-1">
                                     <p class="text-md mb-0 text-capitalize">รายการรวม อันดับ 2</p>
-                                    <h4 class="mb-0"><?php //echo (count($rank) > 1 ? $rank[1]["list"] : "0") ?></h4>
+                                    <h4 class="mb-0"><?php echo (count($rank) > 1 ? $rank[1]["list"] : "0") ?></h4>
                                 </div>
                             </div>
                             <hr class="dark horizontal my-0">
@@ -93,7 +92,7 @@ require_once "checkLoginAdmin.php";
                                 </div>
                                 <div class="text-end pt-1">
                                     <p class="text-md mb-0 text-capitalize">รายการรวม อันดับ 3</p>
-                                    <h4 class="mb-0"><?php //echo (count($rank) > 2 ? $rank[2]["list"] : "0") ?></h4>
+                                    <h4 class="mb-0"><?php echo (count($rank) > 2 ? $rank[2]["list"] : "0") ?></h4>
                                 </div>
                             </div>
                             <hr class="dark horizontal my-0">
