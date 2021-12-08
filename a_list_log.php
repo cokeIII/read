@@ -28,7 +28,7 @@ require_once "checkLoginAdmin.php";
                                 $rowSum = mysqli_fetch_array($resSum);
                                 ?>
                                 <div class="text-end pt-1">
-                                    <p class="text-md mb-0 text-capitalize">รายการทั้งหมด</p>
+                                    <p class="text-md mb-0 text-capitalize">รายการทั้งหมด.</p>
                                     <h4 class="mb-0"><?php echo $rowSum["countRead"]; ?></h4>
                                 </div>
                             </div>
