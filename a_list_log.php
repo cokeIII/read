@@ -42,7 +42,7 @@ require_once "checkLoginAdmin.php";
                     $rank = [];
                     $sqlRank = "select stu_fname,stu_lname,count(read_id) as countRead from read_log r
                     left join student s on s.student_id = r.student_id
-                    group by s.group_id limit 3";
+                    order by count(r.read_id) limit 3";
                     $resRank = mysqli_query($conn, $sqlRank);
                     while ($rowRank = mysqli_fetch_array($resRank)) {
                         array_push($rank, ["group" => $rowRank["stu_fname"]." ".$rowRank["stu_lname"], "list" => $rowRank["countRead"]]);
