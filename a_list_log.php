@@ -157,71 +157,71 @@ require_once "checkLoginAdmin.php";
 </html>
 <script>
     $(document).ready(function() {
-        // $("#group_select").select2()
-        $(document).on('change', '#group_select', function() {
-            $("#listLog").DataTable({
-                "paging": true,
-                "lengthChange": true,
-                "searching": true,
-                "ordering": true,
-                "info": true,
-                "bDestroy": true,
-                "responsive": true,
-                "autoWidth": false,
-                "pageLength": 30,
-                "ajax": {
-                    "url": "a_get_list_log.php",
-                    "type": "POST",
-                    "data": function(d) {
-                        d.std = true,
-                            d.group_id = $("#group_select").val()
-                    }
-                },
-                'processing': true,
-                "columns": [{
-                        "data": "no"
-                    },
-                    {
-                        "data": "std_name"
-                    },
-                    {
-                        "data": "level"
-                    },
-                    {
-                        "data": "book_name"
-                    },
-                    {
-                        "data": "read_date"
-                    },
-                    {
-                        "data": "print"
-                    },
-                    {
-                        "data": "edit"
-                    },
-                    {
-                        "data": "del"
-                    }
-                ],
-                "language": {
-                    'processing': '<img src="img/tenor.gif" width="80">',
-                    "lengthMenu": "แสดง _MENU_ แถวต่อหน้า",
-                    "zeroRecords": "ไม่มีข้อมูล",
-                    "info": "กำลังแสดงข้อมูล _START_ ถึง _END_ จาก _TOTAL_ รายการ",
-                    "search": "ค้นหา:",
-                    "infoEmpty": "ไม่มีข้อมูลแสดง",
-                    "infoFiltered": "(ค้นหาจาก _MAX_ total records)",
-                    "paginate": {
-                        "first": "หน้าแรก",
-                        "last": "หน้าสุดท้าย",
-                        "next": "หน้าต่อไป",
-                        "previous": "หน้าก่อน"
-                    }
-                },
-                responsive: true
-            });
+        $("#group_select").select2()
+        // $(document).on('change', '#group_select', function() {
+        //     $("#listLog").DataTable({
+        //         "paging": true,
+        //         "lengthChange": true,
+        //         "searching": true,
+        //         "ordering": true,
+        //         "info": true,
+        //         "bDestroy": true,
+        //         "responsive": true,
+        //         "autoWidth": false,
+        //         "pageLength": 30,
+        //         "ajax": {
+        //             "url": "a_get_list_log.php",
+        //             "type": "POST",
+        //             "data": function(d) {
+        //                 d.std = true,
+        //                     d.group_id = $("#group_select").val()
+        //             }
+        //         },
+        //         'processing': true,
+        //         "columns": [{
+        //                 "data": "no"
+        //             },
+        //             {
+        //                 "data": "std_name"
+        //             },
+        //             {
+        //                 "data": "level"
+        //             },
+        //             {
+        //                 "data": "book_name"
+        //             },
+        //             {
+        //                 "data": "read_date"
+        //             },
+        //             {
+        //                 "data": "print"
+        //             },
+        //             {
+        //                 "data": "edit"
+        //             },
+        //             {
+        //                 "data": "del"
+        //             }
+        //         ],
+        //         "language": {
+        //             'processing': '<img src="img/tenor.gif" width="80">',
+        //             "lengthMenu": "แสดง _MENU_ แถวต่อหน้า",
+        //             "zeroRecords": "ไม่มีข้อมูล",
+        //             "info": "กำลังแสดงข้อมูล _START_ ถึง _END_ จาก _TOTAL_ รายการ",
+        //             "search": "ค้นหา:",
+        //             "infoEmpty": "ไม่มีข้อมูลแสดง",
+        //             "infoFiltered": "(ค้นหาจาก _MAX_ total records)",
+        //             "paginate": {
+        //                 "first": "หน้าแรก",
+        //                 "last": "หน้าสุดท้าย",
+        //                 "next": "หน้าต่อไป",
+        //                 "previous": "หน้าก่อน"
+        //             }
+        //         },
+        //         responsive: true
+        //     });
 
-        })
+        // })
         $(document).on('click', '.editRead', function() {
             let read_id = $(this).attr("readId")
             $.redirect("form_edit_log.php", {
