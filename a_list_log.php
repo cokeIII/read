@@ -44,12 +44,12 @@ require_once "checkLoginAdmin.php";
                     left join student s on s.student_id = r.student_id
                     left join student_group sg on s.group_id = sg.student_group_id
                     group by s.group_id limit 3";
-                    $resRank = mysqli_query($conn, $sqlRank);
-                    while ($rowRank = mysqli_fetch_array($resRank)) {
-                        array_push($rank, ["group" => $rowRank["student_group_short_name"], "list" => $rowRank["countRead"]]);
-                    }
+                    // $resRank = mysqli_query($conn, $sqlRank);
+                    // while ($rowRank = mysqli_fetch_array($resRank)) {
+                    //     array_push($rank, ["group" => $rowRank["student_group_short_name"], "list" => $rowRank["countRead"]]);
+                    // }
                     $list = array_column($rank, 'list');
-                    // array_multisort($list, SORT_DESC, $rank);
+                    array_multisort($list, SORT_DESC, $rank);
                     ?>
                     <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
                         <div class="card">
