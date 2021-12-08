@@ -108,11 +108,11 @@ require_once "checkLoginAdmin.php";
                     <div class="col-md-3">
                         <select id="group_select" class="form-control">
                             <option value="">เลือกทั้งหมด</option>
-                            <?php $sqlG = "select * from student_group";
+                            <?php $sqlG = "select * from student_group where student_group_year >= ((select max(student_group_year) from student_group)-3)";
                             $resG = mysqli_query($conn, $sqlG);
                             while ($rowG = mysqli_fetch_array($resG)) {
                             ?>
-                                <option value="<?php echo $rowG["student_group_id"]; ?>"><?php //echo $rowG["student_group_short_name"] . "(" . $rowG["student_group_id"] . ")"; ?></option>
+                                <option value="<?php echo $rowG["student_group_id"]; ?>"><?php echo $rowG["student_group_short_name"] . "(" . $rowG["student_group_id"] . ")"; ?></option>
                             <?php } ?>
                         </select>
                     </div>
@@ -232,68 +232,68 @@ require_once "checkLoginAdmin.php";
 
         })
 
-        $("#listLog").DataTable({
-            "paging": true,
-            "lengthChange": true,
-            "searching": true,
-            "ordering": true,
-            "info": true,
-            "bDestroy": true,
-            "responsive": true,
-            "autoWidth": false,
-            "pageLength": 30,
-            "ajax": {
-                "url": "a_get_list_log.php",
-                "type": "POST",
-                "data": function(d) {
-                    d.std = true,
-                        d.group_id = ""
-                }
-            },
-            'processing': true,
-            "columns": [{
-                    "data": "no"
-                },
-                {
-                    "data": "std_name"
-                },
-                {
-                    "data": "level"
-                },
-                {
-                    "data": "book_name"
-                },
-                {
-                    "data": "read_date"
-                },
-                {
-                    "data": "print"
-                },
-                {
-                    "data": "edit"
-                },
-                {
-                    "data": "del"
-                }
-            ],
-            "language": {
-                'processing': '<img src="img/tenor.gif" width="80">',
-                "lengthMenu": "แสดง _MENU_ แถวต่อหน้า",
-                "zeroRecords": "ไม่มีข้อมูล",
-                "info": "กำลังแสดงข้อมูล _START_ ถึง _END_ จาก _TOTAL_ รายการ",
-                "search": "ค้นหา:",
-                "infoEmpty": "ไม่มีข้อมูลแสดง",
-                "infoFiltered": "(ค้นหาจาก _MAX_ total records)",
-                "paginate": {
-                    "first": "หน้าแรก",
-                    "last": "หน้าสุดท้าย",
-                    "next": "หน้าต่อไป",
-                    "previous": "หน้าก่อน"
-                }
-            },
-            responsive: true,
-            "scrollX": true
-        });
+        // $("#listLog").DataTable({
+        //     "paging": true,
+        //     "lengthChange": true,
+        //     "searching": true,
+        //     "ordering": true,
+        //     "info": true,
+        //     "bDestroy": true,
+        //     "responsive": true,
+        //     "autoWidth": false,
+        //     "pageLength": 30,
+        //     "ajax": {
+        //         "url": "a_get_list_log.php",
+        //         "type": "POST",
+        //         "data": function(d) {
+        //             d.std = true,
+        //                 d.group_id = ""
+        //         }
+        //     },
+        //     'processing': true,
+        //     "columns": [{
+        //             "data": "no"
+        //         },
+        //         {
+        //             "data": "std_name"
+        //         },
+        //         {
+        //             "data": "level"
+        //         },
+        //         {
+        //             "data": "book_name"
+        //         },
+        //         {
+        //             "data": "read_date"
+        //         },
+        //         {
+        //             "data": "print"
+        //         },
+        //         {
+        //             "data": "edit"
+        //         },
+        //         {
+        //             "data": "del"
+        //         }
+        //     ],
+        //     "language": {
+        //         'processing': '<img src="img/tenor.gif" width="80">',
+        //         "lengthMenu": "แสดง _MENU_ แถวต่อหน้า",
+        //         "zeroRecords": "ไม่มีข้อมูล",
+        //         "info": "กำลังแสดงข้อมูล _START_ ถึง _END_ จาก _TOTAL_ รายการ",
+        //         "search": "ค้นหา:",
+        //         "infoEmpty": "ไม่มีข้อมูลแสดง",
+        //         "infoFiltered": "(ค้นหาจาก _MAX_ total records)",
+        //         "paginate": {
+        //             "first": "หน้าแรก",
+        //             "last": "หน้าสุดท้าย",
+        //             "next": "หน้าต่อไป",
+        //             "previous": "หน้าก่อน"
+        //         }
+        //     },
+        //     responsive: true,
+        //     "scrollX": true
+        // });
 
     })
 </script>
