@@ -39,17 +39,17 @@ require_once "checkLoginAdmin.php";
                         </div>
                     </div>
                     <?php
-                    $rank = [];
-                    $sqlRank = "select student_group_short_name,count(read_id) as countRead from read_log r
-                    left join student s on s.student_id = r.student_id
-                    left join student_group sg on s.group_id = sg.student_group_id
-                    group by s.group_id limit 3";
-                    $resRank = mysqli_query($conn, $sqlRank);
-                    while ($rowRank = mysqli_fetch_array($resRank)) {
-                        array_push($rank, ["group" => $rowRank["student_group_short_name"], "list" => $rowRank["countRead"]]);
-                    }
-                    $list = array_column($rank, 'list');
-                    array_multisort($list, SORT_DESC, $rank);
+                    // $rank = [];
+                    // $sqlRank = "select student_group_short_name,count(read_id) as countRead from read_log r
+                    // left join student s on s.student_id = r.student_id
+                    // left join student_group sg on s.group_id = sg.student_group_id
+                    // group by s.group_id limit 3";
+                    // $resRank = mysqli_query($conn, $sqlRank);
+                    // while ($rowRank = mysqli_fetch_array($resRank)) {
+                    //     array_push($rank, ["group" => $rowRank["student_group_short_name"], "list" => $rowRank["countRead"]]);
+                    // }
+                    // $list = array_column($rank, 'list');
+                    // array_multisort($list, SORT_DESC, $rank);
                     ?>
                     <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
                         <div class="card">
@@ -59,7 +59,7 @@ require_once "checkLoginAdmin.php";
                                 </div>
                                 <div class="text-end pt-1">
                                     <p class="text-md mb-0 text-capitalize">รายการรวม อันดับ 1</p>
-                                    <h4 class="mb-0"><?php echo (count($rank) > 0 ? $rank[0]["list"] : "0") ?></h4>
+                                    <h4 class="mb-0"><?php //echo (count($rank) > 0 ? $rank[0]["list"] : "0") ?></h4>
                                 </div>
                             </div>
                             <hr class="dark horizontal my-0">
@@ -76,7 +76,7 @@ require_once "checkLoginAdmin.php";
                                 </div>
                                 <div class="text-end pt-1">
                                     <p class="text-md mb-0 text-capitalize">รายการรวม อันดับ 2</p>
-                                    <h4 class="mb-0"><?php echo (count($rank) > 1 ? $rank[1]["list"] : "0") ?></h4>
+                                    <h4 class="mb-0"><?php //echo (count($rank) > 1 ? $rank[1]["list"] : "0") ?></h4>
                                 </div>
                             </div>
                             <hr class="dark horizontal my-0">
@@ -93,7 +93,7 @@ require_once "checkLoginAdmin.php";
                                 </div>
                                 <div class="text-end pt-1">
                                     <p class="text-md mb-0 text-capitalize">รายการรวม อันดับ 3</p>
-                                    <h4 class="mb-0"><?php echo (count($rank) > 2 ? $rank[2]["list"] : "0") ?></h4>
+                                    <h4 class="mb-0"><?php //echo (count($rank) > 2 ? $rank[2]["list"] : "0") ?></h4>
                                 </div>
                             </div>
                             <hr class="dark horizontal my-0">
@@ -157,156 +157,156 @@ require_once "checkLoginAdmin.php";
 </html>
 <script>
     $(document).ready(function() {
-        // $("#group_select").select2()
-        // $(document).on('change', '#group_select', function() {
-        //     $("#listLog").DataTable({
-        //         "paging": true,
-        //         "lengthChange": true,
-        //         "searching": true,
-        //         "ordering": true,
-        //         "info": true,
-        //         "bDestroy": true,
-        //         "responsive": true,
-        //         "autoWidth": false,
-        //         "pageLength": 30,
-        //         "ajax": {
-        //             "url": "a_get_list_log.php",
-        //             "type": "POST",
-        //             "data": function(d) {
-        //                 d.std = true,
-        //                     d.group_id = $("#group_select").val()
-        //             }
-        //         },
-        //         'processing': true,
-        //         "columns": [{
-        //                 "data": "no"
-        //             },
-        //             {
-        //                 "data": "std_name"
-        //             },
-        //             {
-        //                 "data": "level"
-        //             },
-        //             {
-        //                 "data": "book_name"
-        //             },
-        //             {
-        //                 "data": "read_date"
-        //             },
-        //             {
-        //                 "data": "print"
-        //             },
-        //             {
-        //                 "data": "edit"
-        //             },
-        //             {
-        //                 "data": "del"
-        //             }
-        //         ],
-        //         "language": {
-        //             'processing': '<img src="img/tenor.gif" width="80">',
-        //             "lengthMenu": "แสดง _MENU_ แถวต่อหน้า",
-        //             "zeroRecords": "ไม่มีข้อมูล",
-        //             "info": "กำลังแสดงข้อมูล _START_ ถึง _END_ จาก _TOTAL_ รายการ",
-        //             "search": "ค้นหา:",
-        //             "infoEmpty": "ไม่มีข้อมูลแสดง",
-        //             "infoFiltered": "(ค้นหาจาก _MAX_ total records)",
-        //             "paginate": {
-        //                 "first": "หน้าแรก",
-        //                 "last": "หน้าสุดท้าย",
-        //                 "next": "หน้าต่อไป",
-        //                 "previous": "หน้าก่อน"
-        //             }
-        //         },
-        //         responsive: true
-        //     });
+        $("#group_select").select2()
+        $(document).on('change', '#group_select', function() {
+            $("#listLog").DataTable({
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "bDestroy": true,
+                "responsive": true,
+                "autoWidth": false,
+                "pageLength": 30,
+                "ajax": {
+                    "url": "a_get_list_log.php",
+                    "type": "POST",
+                    "data": function(d) {
+                        d.std = true,
+                            d.group_id = $("#group_select").val()
+                    }
+                },
+                'processing': true,
+                "columns": [{
+                        "data": "no"
+                    },
+                    {
+                        "data": "std_name"
+                    },
+                    {
+                        "data": "level"
+                    },
+                    {
+                        "data": "book_name"
+                    },
+                    {
+                        "data": "read_date"
+                    },
+                    {
+                        "data": "print"
+                    },
+                    {
+                        "data": "edit"
+                    },
+                    {
+                        "data": "del"
+                    }
+                ],
+                "language": {
+                    'processing': '<img src="img/tenor.gif" width="80">',
+                    "lengthMenu": "แสดง _MENU_ แถวต่อหน้า",
+                    "zeroRecords": "ไม่มีข้อมูล",
+                    "info": "กำลังแสดงข้อมูล _START_ ถึง _END_ จาก _TOTAL_ รายการ",
+                    "search": "ค้นหา:",
+                    "infoEmpty": "ไม่มีข้อมูลแสดง",
+                    "infoFiltered": "(ค้นหาจาก _MAX_ total records)",
+                    "paginate": {
+                        "first": "หน้าแรก",
+                        "last": "หน้าสุดท้าย",
+                        "next": "หน้าต่อไป",
+                        "previous": "หน้าก่อน"
+                    }
+                },
+                responsive: true
+            });
 
-        // })
-        // $(document).on('click', '.editRead', function() {
-        //     let read_id = $(this).attr("readId")
-        //     $.redirect("form_edit_log.php", {
-        //         read_id: read_id
-        //     });
-        // })
-        // $(document).on('click', '.delRead', function() {
-        //     let read_id = $(this).attr("readId")
-        //     if (confirm("ต้องการลบรายการใช่หรือไม่ ?")) {
-        //         $.redirect("delLog.php", {
-        //             read_id: read_id
-        //         });
-        //     }
-        // })
-        // $(document).on('click', '.printRead', function() {
-        //     let read_id = $(this).attr("readId")
+        })
+        $(document).on('click', '.editRead', function() {
+            let read_id = $(this).attr("readId")
+            $.redirect("form_edit_log.php", {
+                read_id: read_id
+            });
+        })
+        $(document).on('click', '.delRead', function() {
+            let read_id = $(this).attr("readId")
+            if (confirm("ต้องการลบรายการใช่หรือไม่ ?")) {
+                $.redirect("delLog.php", {
+                    read_id: read_id
+                });
+            }
+        })
+        $(document).on('click', '.printRead', function() {
+            let read_id = $(this).attr("readId")
 
-        //     $.redirect("report_read.php", {
-        //         read_id: read_id
-        //     }, "POST", "_blank");
+            $.redirect("report_read.php", {
+                read_id: read_id
+            }, "POST", "_blank");
 
-        // })
+        })
 
-        // $("#listLog").DataTable({
-        //     "paging": true,
-        //     "lengthChange": true,
-        //     "searching": true,
-        //     "ordering": true,
-        //     "info": true,
-        //     "bDestroy": true,
-        //     "responsive": true,
-        //     "autoWidth": false,
-        //     "pageLength": 30,
-        //     "ajax": {
-        //         "url": "a_get_list_log.php",
-        //         "type": "POST",
-        //         "data": function(d) {
-        //             d.std = true,
-        //                 d.group_id = ""
-        //         }
-        //     },
-        //     'processing': true,
-        //     "columns": [{
-        //             "data": "no"
-        //         },
-        //         {
-        //             "data": "std_name"
-        //         },
-        //         {
-        //             "data": "level"
-        //         },
-        //         {
-        //             "data": "book_name"
-        //         },
-        //         {
-        //             "data": "read_date"
-        //         },
-        //         {
-        //             "data": "print"
-        //         },
-        //         {
-        //             "data": "edit"
-        //         },
-        //         {
-        //             "data": "del"
-        //         }
-        //     ],
-        //     "language": {
-        //         'processing': '<img src="img/tenor.gif" width="80">',
-        //         "lengthMenu": "แสดง _MENU_ แถวต่อหน้า",
-        //         "zeroRecords": "ไม่มีข้อมูล",
-        //         "info": "กำลังแสดงข้อมูล _START_ ถึง _END_ จาก _TOTAL_ รายการ",
-        //         "search": "ค้นหา:",
-        //         "infoEmpty": "ไม่มีข้อมูลแสดง",
-        //         "infoFiltered": "(ค้นหาจาก _MAX_ total records)",
-        //         "paginate": {
-        //             "first": "หน้าแรก",
-        //             "last": "หน้าสุดท้าย",
-        //             "next": "หน้าต่อไป",
-        //             "previous": "หน้าก่อน"
-        //         }
-        //     },
-        //     responsive: true,
-        //     "scrollX": true
-        // });
+        $("#listLog").DataTable({
+            "paging": true,
+            "lengthChange": true,
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "bDestroy": true,
+            "responsive": true,
+            "autoWidth": false,
+            "pageLength": 30,
+            "ajax": {
+                "url": "a_get_list_log.php",
+                "type": "POST",
+                "data": function(d) {
+                    d.std = true,
+                        d.group_id = ""
+                }
+            },
+            'processing': true,
+            "columns": [{
+                    "data": "no"
+                },
+                {
+                    "data": "std_name"
+                },
+                {
+                    "data": "level"
+                },
+                {
+                    "data": "book_name"
+                },
+                {
+                    "data": "read_date"
+                },
+                {
+                    "data": "print"
+                },
+                {
+                    "data": "edit"
+                },
+                {
+                    "data": "del"
+                }
+            ],
+            "language": {
+                'processing': '<img src="img/tenor.gif" width="80">',
+                "lengthMenu": "แสดง _MENU_ แถวต่อหน้า",
+                "zeroRecords": "ไม่มีข้อมูล",
+                "info": "กำลังแสดงข้อมูล _START_ ถึง _END_ จาก _TOTAL_ รายการ",
+                "search": "ค้นหา:",
+                "infoEmpty": "ไม่มีข้อมูลแสดง",
+                "infoFiltered": "(ค้นหาจาก _MAX_ total records)",
+                "paginate": {
+                    "first": "หน้าแรก",
+                    "last": "หน้าสุดท้าย",
+                    "next": "หน้าต่อไป",
+                    "previous": "หน้าก่อน"
+                }
+            },
+            responsive: true,
+            "scrollX": true
+        });
 
     })
 </script>
