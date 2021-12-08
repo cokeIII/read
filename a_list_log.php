@@ -44,10 +44,10 @@ require_once "checkLoginAdmin.php";
                     left join student s on s.student_id = r.student_id
                     left join student_group sg on s.group_id = sg.student_group_id
                     group by s.group_id limit 3";
-                    // $resRank = mysqli_query($conn, $sqlRank);
-                    // while ($rowRank = mysqli_fetch_array($resRank)) {
-                    //     array_push($rank, ["group" => $rowRank["student_group_short_name"], "list" => $rowRank["countRead"]]);
-                    // }
+                    $resRank = mysqli_query($conn, $sqlRank);
+                    while ($rowRank = mysqli_fetch_array($resRank)) {
+                        array_push($rank, ["group" => $rowRank["student_group_short_name"], "list" => $rowRank["countRead"]]);
+                    }
                     $list = array_column($rank, 'list');
                     array_multisort($list, SORT_DESC, $rank);
                     ?>
@@ -108,7 +108,7 @@ require_once "checkLoginAdmin.php";
                     <div class="col-md-3">
                         <select id="group_select" class="form-control">
                             <option value="">เลือกทั้งหมด</option>
-                            <?php $sqlG = "select * from student_group where student_group_year >= ((select max(student_group_year) from student_group)-3)";
+                            <?php $sqlG = "select * from student_group";
                             $resG = mysqli_query($conn, $sqlG);
                             while ($rowG = mysqli_fetch_array($resG)) {
                             ?>
